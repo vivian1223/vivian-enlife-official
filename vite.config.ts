@@ -4,7 +4,7 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: '/component-playground/',
+	base: '/vivian-enlife-official',
   plugins: [react(), svgr({ svgrOptions: { plugins: ['@svgr/plugin-svgo'] } })],
 	build: {
     cssMinify: true,

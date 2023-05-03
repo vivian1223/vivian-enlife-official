@@ -1,0 +1,35 @@
+.profile {
+	display: flex;
+	justify-content: center;
+	max-width: 600px;
+	width: 100%;
+	padding: 20px;
+}
+
+.profileCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 10px;
+	border-radius: 5px;
+}
+
+.profileImageContainer, .profileImage {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.profileImageContainer {
+	margin-bottom: 10px;
+}
+
+.profileName {
+	font-size: 1rem;
+	color: #353535;
+}
+
+.profileIntro {
+	width: 250px;
+	text-align: center;
+}

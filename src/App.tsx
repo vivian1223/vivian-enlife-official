@@ -27,7 +27,7 @@ function App() {
 				size="small"
 				text="永久會員訂閱方案限時開放中"
 				startIcon={<FontAwesomeIcon className={styles.icon} icon={faArrowRight as IconProp} />}
-				onClick={() => window.open('https://vocus.cc/escapeplan/introduce', '_blank', 'noreferrer')}
+				onClick={() => window.open('https://vocus.cc/salon/vivian_enlife/abo', '_blank', 'noreferrer')}
 			/>
 			<Contact />
 			<Footer />

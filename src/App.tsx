@@ -12,12 +12,15 @@ import Footer from './components/molecules/Footer';
 import Recommendation from './components/molecules/Recommendation';
 import Hot from './components/molecules/Hot';
 import Contact from './components/molecules/Contact';
+import { Card } from './components/molecules/Card';
+import CardImg from './images/winning_plus_banner.png'
 
 function App() {
 	return (
 		<div className={styles.App}>
 			<Header />
 			<Profile />
+			<Card title='2025讀者福利' subtitle='想要提升職場競爭力嗎？' imageUrl={CardImg} url='https://reurl.cc/QZKQ29' buttonText='立即領取'/>
 			<News />
 			<Hot />
 			<Recommendation />

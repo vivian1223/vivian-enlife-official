@@ -11,7 +11,7 @@ const ProfileContent = () => {
 			</div>
 			<h1 className={styles.profileName}>Vivian Yeh</h1>
 			<p className={styles.profileIntro}>
-				Hi，歡迎來到 RD 少女養成計劃，我在這裡陪你探索理想工作。
+				Hi，我是英文系畢業的軟體工程師 Vivian，我在這裡陪你探索理想工作。
 			</p>
 		</div>
 	);

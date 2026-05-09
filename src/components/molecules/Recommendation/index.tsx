@@ -42,9 +42,9 @@ const LinkContent: React.FC<LinkProperty> = ({ title }) => (
 
 const Recommendation = () => (
 	<div className={styles.recommendation}>
-		<SeperationWithTitle title="推薦閱讀" />
+		<SeperationWithTitle className={styles.sectionHeading} title="推薦閱讀" />
 		<div className={styles.list}>
-			{recommendationList.map(({ id, source, title }) => (
+			{recommendationList.slice(0, 3).map(({ id, source, title }) => (
 				<Link key={id} source={source} content={<LinkContent title={title} />} />
 			))}
 		</div>

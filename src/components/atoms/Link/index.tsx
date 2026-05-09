@@ -7,7 +7,7 @@ interface LinkProperty {
 }
 
 const Link: React.FC<LinkProperty> = ({ source, content }) => (
-	<a className={styles.link} href={source} target="_blank" rel="noreferrer">
+	<a className={styles.link} href={source} target="_blank" rel="noreferrer" data-motion-item>
 		{content}
 	</a>
 );

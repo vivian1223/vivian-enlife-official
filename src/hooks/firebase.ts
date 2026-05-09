@@ -21,11 +21,11 @@ const database = getDatabase(app);
 
 export const useDatabaseOnValue = (props: UseDatabaseOnValueProperty) => {
 	const getRef = ref(database, props.type);
-	const [data, setData] = useState([]);
+	const [data, setData] = useState<any[]>([]);
 	useEffect(() => {
 		onValue(getRef, snapshot => {
 			const value = snapshot.val();
-			setData(value);
+			setData(Array.isArray(value) ? value : []);
 		});
 	}, []);
 	return data;

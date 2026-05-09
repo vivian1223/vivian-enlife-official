@@ -26,9 +26,9 @@ const News = () => {
 	const recommendationList = useDatabaseOnValue({ type: 'recommendationList' });
 	return (
 		<div className={styles.news}>
-			<SeperationWithTitle title="最新消息" />
+			<SeperationWithTitle className={styles.sectionHeading} title="最新消息" />
 			<div className={styles.list}>
-				{recommendationList.map(({ id, source, title }) => (
+				{recommendationList.slice(0, 2).map(({ id, source, title }) => (
 					<Link key={id} source={source} content={<LinkContent title={title} />} />
 				))}
 			</div>

@@ -1,17 +1,30 @@
 .seperation {
 	position: relative;
 	width: 100%;
+	height: auto;
+	margin-bottom: 18px;
+	padding-bottom: 14px;
+}
+
+.seperation::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	height: 1px;
-	background-color: #dab49d;
-	margin: 12px 0;
+	background: linear-gradient(90deg, rgb(155 52 36 / 36%), rgb(214 166 95 / 10%));
 }
 
 .title {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	padding: 0 12px;
-	background-color: #fff;
-	color: #9b3424;
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+	background: transparent;
+	color: var(--primary-dark);
+	font-family: 'Cormorant Garamond', 'Noto Sans TC', serif;
+	font-size: clamp(1.5rem, 2.2vw, 2rem);
+	font-weight: 600;
+	line-height: 1.02;
+	letter-spacing: -0.03em;
 }

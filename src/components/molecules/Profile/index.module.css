@@ -1,35 +1,365 @@
 .profile {
 	display: flex;
-	justify-content: center;
-	max-width: 600px;
-	width: 100%;
-	padding: 20px;
-}
-
-.profileCard {
-	display: flex;
 	flex-direction: column;
-	align-items: center;
-	padding: 20px 10px;
-	border-radius: 5px;
+	gap: 22px;
+	width: 100%;
+	padding: 8px 0 10px;
+	border-radius: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	position: relative;
+	overflow: hidden;
 }
 
-.profileImageContainer, .profileImage {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+.profile::before {
+	content: '';
+	position: absolute;
+	inset: -20px auto auto -78px;
+	width: 240px;
+	height: 240px;
+	background: radial-gradient(circle, rgb(155 52 36 / 8%), transparent 70%);
+	pointer-events: none;
+	animation: profile-ambient-drift 16s ease-in-out infinite alternate;
 }
 
-.profileImageContainer {
-	margin-bottom: 10px;
+.heroTop {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 118px;
+	gap: 18px;
+	align-items: end;
+	padding: 4px 0 18px;
+	border-bottom: 1px solid rgb(155 52 36 / 12%);
+}
+
+.copyColumn,
+.visualColumn,
+.readerSection {
+	position: relative;
+	z-index: 1;
+}
+
+.eyebrow {
+	margin: 0 0 10px;
+	color: var(--primary);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	opacity: 0;
+	animation: profile-fade-up var(--motion-duration-base) var(--motion-ease-soft) var(--motion-stagger-1) forwards;
+}
+
+.heroRule {
+	width: min(108px, 28vw);
+	height: 1px;
+	margin-bottom: 16px;
+	background: linear-gradient(90deg, rgb(155 52 36 / 52%), rgb(214 166 95 / 0%));
+	opacity: 0;
+	animation: profile-line-grow var(--motion-duration-base) var(--motion-ease-soft) var(--motion-stagger-1) forwards;
+}
+
+.heroTitle {
+	margin: 0 0 16px;
+	font-size: clamp(1.68rem, 4.2vw, 2.9rem);
+	line-height: 0.98;
+	letter-spacing: -0.04em;
+	opacity: 0;
+	animation: profile-fade-up var(--motion-duration-base) var(--motion-ease-soft) var(--motion-stagger-2) forwards;
+}
+
+.identityRow {
+	display: grid;
+	grid-template-columns: minmax(0, 178px) minmax(0, 1fr);
+	gap: 16px;
+	align-items: end;
+	margin-bottom: 14px;
+	opacity: 0;
+	animation: profile-fade-up var(--motion-duration-base) var(--motion-ease-soft) var(--motion-stagger-3) forwards;
+}
+
+.signatureBlock {
+	display: grid;
+	gap: 4px;
 }
 
 .profileName {
-	font-size: 1rem;
-	color: #353535;
+	margin: 0;
+	font-family: 'Cormorant Garamond', 'Noto Sans TC', serif;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1;
+	color: var(--primary-dark);
+}
+
+.profileRole {
+	margin: 0;
+	font-size: 0.78rem;
+	font-weight: 700;
+	line-height: 1.5;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgb(109 33 22 / 72%);
+}
+
+.heroStamp {
+	margin: 0;
+	padding-left: 16px;
+	border-left: 1px solid rgb(155 52 36 / 12%);
+	font-size: 0.74rem;
+	line-height: 1.55;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgb(109 33 22 / 62%);
 }
 
 .profileIntro {
-	width: 250px;
-	text-align: center;
+	margin: 0;
+	max-width: 700px;
+	font-size: 0.98rem;
+	color: var(--text-soft);
+	line-height: 1.75;
+	opacity: 0;
+	animation: profile-fade-up var(--motion-duration-base) var(--motion-ease-soft) var(--motion-stagger-4) forwards;
+}
+
+.visualColumn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.imageShell {
+	position: relative;
+	width: 118px;
+	padding: 7px;
+	border-radius: 26px;
+	background: linear-gradient(180deg, rgb(255 255 255 / 92%), rgb(255 243 229 / 84%));
+	border: 1px solid rgb(155 52 36 / 12%);
+	box-shadow:
+		0 18px 36px rgb(123 76 55 / 10%),
+		inset 0 1px 0 rgb(255 255 255 / 60%);
+	opacity: 0;
+	transform-origin: center bottom;
+	animation: profile-soft-scale-in var(--motion-duration-slow) var(--motion-ease-soft) 260ms forwards;
+	transition:
+		transform var(--motion-duration-fast) var(--motion-ease-swift),
+		box-shadow var(--motion-duration-fast) var(--motion-ease-swift);
+}
+
+.imageShell::after {
+	content: '';
+	position: absolute;
+	inset: 10px;
+	border-radius: 22px;
+	border: 1px solid rgb(255 255 255 / 34%);
+	pointer-events: none;
+}
+
+.imageShell:hover {
+	transform: translate3d(0, -2px, 0);
+	box-shadow:
+		0 24px 42px rgb(123 76 55 / 12%),
+		inset 0 1px 0 rgb(255 255 255 / 60%);
+}
+
+.profileImage {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	object-position: center 18%;
+	border-radius: 20px;
+}
+
+.readerSection {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.readerHeader {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.readerEyebrow {
+	margin: 0;
+	font-size: 0.66rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: rgb(109 33 22 / 62%);
+}
+
+.sectionTitle {
+	margin: 0;
+	font-size: clamp(1.36rem, 3vw, 2rem);
+	line-height: 1.04;
+}
+
+.audienceDeck {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.audienceCard {
+	display: grid;
+	gap: 10px;
+	padding: 14px 14px 16px;
+	border-top: 1px solid rgb(155 52 36 / 16%);
+	background: linear-gradient(180deg, rgb(255 251 246 / 48%), rgb(255 248 241 / 18%));
+}
+
+.audienceLabel {
+	font-size: 0.76rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--primary-dark);
+}
+
+.audienceDescription {
+	margin: 0;
+	font-size: 0.88rem;
+	line-height: 1.65;
+}
+
+@media (min-width: 900px) {
+	.profile {
+		padding: 12px 0 14px;
+	}
+
+	.heroTop {
+		grid-template-columns: minmax(0, 1fr) 228px;
+		gap: 32px;
+		padding: 12px 0 22px;
+	}
+
+	.heroTitle {
+		font-size: clamp(2.55rem, 3.8vw, 4rem);
+		margin-bottom: 18px;
+	}
+
+	.imageShell {
+		width: 228px;
+		padding: 10px;
+		border-radius: 34px;
+	}
+
+	.profileImage {
+		border-radius: 26px;
+	}
+
+	.identityRow {
+		grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+		gap: 22px;
+	}
+
+	.profileName {
+		font-size: 1.9rem;
+	}
+
+	.profileIntro {
+		font-size: 1rem;
+		max-width: 760px;
+	}
+}
+
+@media (max-width: 640px) {
+	.heroTop {
+		grid-template-columns: minmax(0, 1fr) 100px;
+		gap: 14px;
+	}
+
+	.heroTitle {
+		font-size: clamp(1.5rem, 8vw, 2.1rem);
+		margin-bottom: 14px;
+	}
+
+	.identityRow {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 8px;
+		margin-bottom: 12px;
+	}
+
+	.heroStamp {
+		padding-left: 0;
+		border-left: 0;
+		padding-top: 8px;
+		border-top: 1px solid rgb(155 52 36 / 10%);
+	}
+
+	.imageShell {
+		width: 100px;
+		padding: 6px;
+		border-radius: 24px;
+	}
+
+	.profileImage {
+		border-radius: 18px;
+	}
+
+	.profileIntro,
+	.audienceDescription {
+		max-width: none;
+	}
+
+	.audienceDeck {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 10px;
+	}
+
+	.audienceCard {
+		padding: 12px 0 14px;
+		background: none;
+	}
+}
+
+@keyframes profile-fade-up {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 18px, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes profile-soft-scale-in {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 14px, 0) scale(0.97);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+}
+
+@keyframes profile-line-grow {
+	from {
+		opacity: 0;
+		transform: scaleX(0.35);
+		transform-origin: left center;
+	}
+
+	to {
+		opacity: 1;
+		transform: scaleX(1);
+		transform-origin: left center;
+	}
+}
+
+@keyframes profile-ambient-drift {
+	from {
+		transform: translate3d(-1.5%, -1%, 0) scale(1);
+	}
+
+	to {
+		transform: translate3d(1.5%, 1%, 0) scale(1.04);
+	}
 }

@@ -9,7 +9,7 @@ const Header = () => {
 		<div className={styles.header}>
 			<div className={styles.headerContent}>
 				<FontAwesomeIcon className={styles.icon} icon={faBullhorn as IconProp} />
-				專欄訂閱讀者招募中，詳情見下方「推薦閱讀」
+				專屬訂閱讀者招募中，詳情見下方「推薦閱讀」
 			</div>
 		</div>
 	);

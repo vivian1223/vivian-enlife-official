@@ -1,29 +1,46 @@
 @import './../../../index.css';
 
 .button {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	gap: 8px;
+	font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
 	font-weight: 700;
-	border: 0;
-	border-radius: 3em;
+	border: 1px solid transparent;
+	border-radius: 999px;
 	cursor: pointer;
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		background-color 180ms ease,
+		color 180ms ease,
+		border-color 180ms ease;
+}
+
+.button:hover:not(:disabled) {
+	transform: translateY(-1px);
+	box-shadow: 0 14px 26px rgb(111 67 49 / 14%);
+}
+
+.button:active:not(:disabled) {
+	transform: translateY(0);
+	box-shadow: 0 8px 16px rgb(111 67 49 / 14%);
 }
 
 .small {
-	font-size: 12px;
+	font-size: 0.82rem;
 	padding: 10px 16px;
 }
 
 .medium {
-	font-size: 14px;
-	padding: 11px 20px;
+	font-size: 0.92rem;
+	padding: 13px 20px;
 }
 
 .large {
-	font-size: 16px;
-	padding: 12px 24px;
+	font-size: 1rem;
+	padding: 15px 26px;
 }
 
 .filled {
@@ -32,30 +49,21 @@
 
 .primary {
 	&.contained {
-		background-color: var(--primary);
+		background: linear-gradient(135deg, var(--primary), #af4c3d);
 		color: var(--white);
 
-		&:hover , &:active {
-			background-color: var(--primary-dark);
+		&:hover, &:active {
+			background: linear-gradient(135deg, #8f2f21, var(--primary-dark));
 		}
 	}
 
 	&.outlined {
-		background-color: var(--white);
+		background-color: rgb(255 255 255 / 52%);
 		color: var(--primary);
-		border: 1px solid var(--primary);
+		border-color: rgb(155 52 36 / 18%);
 
-		&:hover , &:active {
-			background-color: var(--primary);
-			color: var(--white);
-
-			& > .start-icon >svg > path {
-				fill: var(--white);
-			}
-
-			& > .end-icon >svg > path {
-				fill: var(--white);
-			}
+		&:hover, &:active {
+			background-color: rgb(155 52 36 / 8%);
 		}
 	}
 
@@ -63,182 +71,60 @@
 		background-color: var(--info-dark);
 		color: var(--white);
 		cursor: not-allowed;
-
-		&:hover, &:active {
-			background-color: var(--info-dark);
-			color: var(--white);
-		}
 	}
 }
 
 .secondary {
 	&.contained {
-		background-color: var(--secondary);
-		color: var(--white);
-
-		&:hover , &:active {
-			background-color: var(--secondary-dark);
-		}
+		background: linear-gradient(135deg, var(--secondary), #e6b771);
+		color: var(--dark);
 	}
 
 	&.outlined {
-		background-color: var(--white);
-		color: var(--secondary);
-		border: 1px solid var(--secondary);
-
-		&:hover , &:active {
-			background-color: var(--secondary);
-			color: var(--white);
-
-			& > .start-icon >svg > path {
-				fill: var(--white);
-			}
-
-			& > .end-icon >svg > path {
-				fill: var(--white);
-			}
-		}
+		background-color: transparent;
+		color: var(--secondary-dark);
+		border-color: rgb(214 166 95 / 28%);
 	}
 
 	&:disabled {
 		background-color: var(--info-dark);
 		color: var(--white);
 		cursor: not-allowed;
-		border: none;
-
-		&:hover, &:active {
-			background-color: var(--info-dark);
-			color: var(--white);
-		}
 	}
 }
 
 .white {
 	&.contained {
 		background-color: var(--white);
-		color: none;
-
-		&:hover , &:active {
-			background-color: var(--white);
-		}
+		color: var(--primary-dark);
 	}
 
 	&.outlined {
 		background-color: transparent;
 		color: var(--white);
-		border: 1px solid var(--white);
-
-		&:hover , &:active {
-			background-color: var(--white);
-			color: var(--dark);
-
-			& > .start-icon >svg > path {
-				fill: var(--dark);
-			}
-
-			& > .end-icon >svg > path {
-				fill: var(--dark);
-			}
-		}
+		border-color: rgb(255 255 255 / 40%);
 	}
 
 	&:disabled {
 		background-color: var(--info-dark);
 		color: var(--white);
 		cursor: not-allowed;
-		border: none;
-
-		&:hover, &:active {
-			background-color: var(--info-dark);
-			color: var(--white);
-		}
 	}
 }
 
-.start-icon {
-	display: inline-block;
-	margin-right: 8px;
-
-	&.primary-icon {
-		& > svg > path {
-			fill: var(--white);
-		}
-
-		&.outlined-icon {
-			& > svg > path {
-				fill: var(--primary);
-			}
-		}
-	}
-
-	&.secondary-icon {
-		& > svg > path {
-			fill: var(--white);
-		}
-
-		&.outlined-icon {
-			& > svg > path {
-				fill: var(--secondary);
-			}
-		}
-	}
-
-	&.white-icon {
-		& > svg > path {
-			fill: var(--dark);
-		}
-
-		&.outlined-icon {
-			& > svg > path {
-				fill: var(--white);
-			}
-		}
-	}
-}
-
-.end-icon {
-	display: inline-block;
-	margin-left: 8px;
-
-	&.primary-icon {
-		& > svg > path {
-			fill: var(--white);
-		}
-
-		&.outlined-icon {
-			& > svg > path {
-				fill: var(--primary);
-			}
-		}
-	}
-
-	&.secondary-icon {
-		& > svg > path {
-			fill: var(--white);
-		}
-
-		&.outlined-icon {
-			& > svg > path {
-				fill: var(--secondary);
-			}
-		}
-	}
-
-	&.white-icon {
-		& > svg > path {
-			fill: var(--dark);
-		}
-
-		&.outlined-icon {
-			& > svg > path {
-				fill: var(--white);
-			}
-		}
-	}
-}
-
+.startIcon,
+.endIcon,
 .text {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 }
 
+.endIcon,
+.startIcon {
+	transition: transform var(--motion-duration-fast) var(--motion-ease-swift);
+}
 
+.button:hover .endIcon,
+.button:hover .startIcon {
+	transform: translate3d(2px, 0, 0);
+}

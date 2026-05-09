@@ -1,6 +1,44 @@
 .link {
-	font-weight: 500;
-	color: #343a40;
-	font-size: 12px;
-	margin: 10px 0;
+	width: 100%;
+	font-weight: 600;
+	color: var(--text);
+	font-size: 0.94rem;
+	margin: 0;
+	padding: 15px 16px;
+	border-radius: 16px;
+	background: rgb(255 255 255 / 44%);
+	border: 1px solid rgb(155 52 36 / 9%);
+	line-height: 1.55;
+	transition:
+		transform 180ms ease,
+		background-color 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease,
+		filter 180ms ease;
+}
+
+.link:hover {
+	transform: translateY(-1px);
+	background: rgb(255 255 255 / 78%);
+	border-color: rgb(155 52 36 / 18%);
+	box-shadow: 0 12px 24px rgb(104 63 48 / 7%);
+	filter: saturate(1.02);
+}
+
+.link:active {
+	transform: translateY(0);
+	background: rgb(255 255 255 / 82%);
+	box-shadow: 0 7px 16px rgb(104 63 48 / 6%);
+}
+
+.link svg {
+	transition:
+		transform var(--motion-duration-fast) var(--motion-ease-swift),
+		color var(--motion-duration-fast) var(--motion-ease-swift);
+}
+
+.link:hover svg,
+.link:active svg {
+	transform: translate3d(2px, -1px, 0);
+	color: var(--primary-dark);
 }
